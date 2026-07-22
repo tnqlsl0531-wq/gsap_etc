@@ -384,3 +384,62 @@ function changeBg(imgUrl) {
     }
   })
 }
+//처음 화면에 들어오기 전 기본 sticky 이미지를 1번으로 세팅
+changeBg(`asset/info1.png`)
+
+const pinBg = document.getElementById('pin_bg');
+const photos = gsap.utils.toArray('.photo');
+
+
+const pinTl = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.pin_scene',
+    start: 'top top',
+    //1800px 스크롤 하는 동안 타임라인이 진행된다
+    end: "+=1800",
+    //섹션을 화면에 고정해서 사진이 올라온는 무대를 만둔다
+    pin: true;
+  }
+
+// pin이 시작될 때 생길 수 있는 튐을 줄인다.
+anticipatePin: 1,
+  // 새로고침이나 리사이즈 때 값을 다시 계산한다.
+  invalidateOnRefresh: true,
+  // 내려갈 때만 재생하고, 다시 위에서 진입하면 초기화한다.
+  toggleActions: 'play none none reset',
+
+
+});
+
+//배경 이미지를 살짝 흐리게 크게 키워서 
+// ㅠㅠ
+
+//사진마다 살짝 다른 각도와giltech효과를 줘서 디자인 갤러리 처럼 겹쳐 보인다
+photos.forEach((photos, index) => {
+  //사진이 등장하기 직전에 레이어 순서와 glitch클래스를 조정
+  pinTl.add(() => {
+    //뒤에 나온 사진이 앞쪽에 쌓이도록 z인뎃스 올림
+    photos.style.zIndex = String(100 + index);
+    photos.classList.add('glitch');
+    //0.4초 뒤 glitxh의 클래스를 제거해 효과를 끝낸다
+    gsap.delayedCall(0.4, ())
+  })
+
+
+  //사진을 숨겨진 시작 상태 전에서 전에도 이동시킨ㄴ다
+  pinTl.fromTo(photo, {
+    opactity
+
+
+  }, {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: ''
+
+
+})
+// 사진 묶음 전체를 마지막에 조금 위로 올려 장면이 마무리되는 느낌을 준다.
+pinTl.to('.float_wrap', { yPercent: -6, duration: 0.8, ease: 'none' }, '>0.1');// 사진 묶음 전체를 마지막에 조금 위로 올려 장면이 마무리되는 느낌을 준다.
+    pinTl.to('.float_wrap', { yPercent: -6, duration: 0.8, ease: 'none' }, '>0.1'); s
+  })
