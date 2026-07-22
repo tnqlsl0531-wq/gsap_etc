@@ -333,21 +333,21 @@ document.querySelectorAll('.tit_card').forEach((card) => {
   //레이어가 없으면 이 카드는 건너뛴다
   if (!layer) return;
 
-
   //카드 위에서 마우스를 움직일때 기울기 값을 계산
   card.addEventListener('mousemove', (e) => {
     const rect = card.getBoundingClientRect();
-    //카드 안에서 마우스가 가로로 몇퍼센트 위치인지 계산
+    //카드안에서 마우스가 가로로 몇퍼센트 위치인지 계산
     const px = (e.clientX - rect.left) / rect.width;
     const py = (e.clientY - rect.top) / rect.height;
-    //위아래 위치를 rotateX각도로 바꾼다
+    //위아래 위치를 rotateX 각도로 바꾼다
     const rx = (py - 0.5) * -15;
     const ry = (px - 0.5) * 22;
 
     //계산한 각도를 안쪽 레이어 transform에 적용
-    layer.style.stransform = `translateZ(0) rotateX(${rx}deg) rotateY(${ry}deg)`;
-    card.addEventListener('mouseleaver', () => {
-      layer.style.stransform = `translateZ(0) rotateX(0deg) rotateY(0deg)`;
+    layer.style.transform = `translateZ(0) rotateX(${rx}deg) rotateY(${ry}deg)`;
+
+    card.addEventListener('mouseleave', () => {
+      layer.style.transform = `translateZ(0) rotateX(0deg) rotateY(0deg)`;
     })
   })
 });
@@ -361,16 +361,16 @@ processCards.forEach((card, index) => {
   const imgUrl = `asset/info${index + 1}.png`;
 
   //카드가 화면 중앙에 들어오는 순간 감지
-  ScrollTrigger.craete({
+  ScrollTrigger.create({
     trigger: card,
     start: 'top center',
-    end: 'bottom center ',
+    end: 'bottom center',
     onEnter: () => changeBg(imgUrl),
     onEnterBack: () => changeBg(imgUrl),
   });
 })
 
-//sticky 박스의 이미지를 바로 바꾸면 딱딱해서 살짝 줄였다가 다시 키우며 교체
+//sticky 박스의 이미지를 바로 바꾸면 딱닥해서 살짝 줄였다가 다시 키우며 교체
 function changeBg(imgUrl) {
   if (!stickyBox) return;
 
@@ -380,7 +380,7 @@ function changeBg(imgUrl) {
     duration: 0.2,
     onComplete: () => {
       stickyBox.style.backgroundImage = `url(${imgUrl})`;
-      gsap.to(stickyBox, { opacity1, scale: 1, duration: 0.45 })
+      gsap.to(stickyBox, { opacity: 1, scale: 1, duration: 0.45 });
     }
   })
 }

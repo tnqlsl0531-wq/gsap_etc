@@ -368,6 +368,7 @@ h1 a img {
   transform: translateY(24px);
   height: auto;
   display: flex;
+  opacity: 0;
 }
 
 .tit_layer {
@@ -484,6 +485,7 @@ h1 a img {
   transition: background 0.4s ease-out;
   mix-blend-mode: screen;
   /* 빛이 섞이듯 표현 */
+
 }
 
 .feature_card .word,
@@ -524,7 +526,7 @@ h1 a img {
   gap: 30px;
   justify-content: center;
   align-items: flex-start;
-  pad: 50vh 0;
+  padding: 50vh 0;
 }
 
 .info_section .info_tit {
@@ -537,7 +539,7 @@ h1 a img {
 
 .info_section .info_tit h2 {
   line-height: 1.1;
-  opacity: 0.5;
+  /* opacity: 0.5; */
 }
 
 .section_lead {
@@ -546,7 +548,7 @@ h1 a img {
   color: var(--ink);
   font-size: 0.8rem;
   font-weight: 100;
-  opacity: 0.5;
+  /* opacity: 0.5; */
 }
 
 .sticky_box {
@@ -555,7 +557,7 @@ h1 a img {
   background-size: cover;
   background-position: center;
   border-radius: 24px;
-  box-shadow: 0 24px 70px rgba(108, 80, 27, 0.08);
+  box-shadow: 0 24px 70px rgba(108, 80, 27, .08);
 }
 
 .info_section .projects_all {
@@ -568,14 +570,14 @@ h1 a img {
 .info_section .projects_all .card {
   position: relative;
   overflow: hidden;
-  background-color: #ffe2a6;
+  background-color: #101827;
   background-image:
-    radial-gradient(circle at 50% 50%, #ff8a1e 0% 18%, transparent 34%),
-    radial-gradient(circle at 82% 18%, color-mix(in oklch, #ff8a1e 48%, white) 0 16%, transparent 32%),
-    radial-gradient(circle at 72% 76%, #ffe2a6 0 18%, transparent 36%),
-    radial-gradient(circle at 24% 82%, color-mix(in oklch, #ffe2a6 55%, black) 0 16%, transparent 34%);
-  background-blend-mode: screen, normal, multiply, normal;
-  min-height: 52px;
+    radial-gradient(circle at 18% 26%, color-mix(in oklch, #ff8a1e 88%, white) 0 14%, transparent 38%),
+    radial-gradient(circle at 82% 22%, color-mix(in oklch, #101827 74%, white) 0 16%, transparent 42%),
+    repeating-radial-gradient(circle at 52% 58%, transparent 0 25px, color-mix(in oklch, #ff8a1e 34%, transparent) 26px 27px, transparent 28px 50px),
+    conic-gradient(from 118deg at 50% 50%, #ff8a1e, #101827, color-mix(in oklch, #ff8a1e 42%, #101827), #ff8a1e);
+  background-blend-mode: screen, lighten, overlay, normal;
+  min-height: 52vh;
   border-radius: 22px;
   padding: clamp(28px, 4vw, 54px);
   display: flex;
@@ -601,6 +603,7 @@ h1 a img {
   font-size: clamp(4rem, 9vw, 8rem);
   line-height: 1;
 }
+
 .projects_all .card h4 {
   position: relative;
   max-width: 11ch;
